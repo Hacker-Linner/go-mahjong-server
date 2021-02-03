@@ -1,5 +1,6 @@
 # Server
 
+![](wx-bot.png)
 
 ### 本地开发
 
