@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: bitnami/mysql:5.7-debian-10
+    restart: always
+    networks:
+      - db_network
+    ports:
+      - "3306:3306"
+    volumes:
+      - 'db_data:/bitnami/mysql/data'
+    environment:
+      MYSQL_DATABASE: scmj
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_CHARACTER_SET: 'utf8mb4'
+      MYSQL_COLLATE: 'utf8mb4_unicode_ci'
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - db_network
+    ports:
+      - 8080:8080
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  db_network:
+    driver: "bridge"
