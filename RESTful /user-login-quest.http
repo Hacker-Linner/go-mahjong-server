@@ -1,0 +1,11 @@
+
+
+### 游客(Guest)登录
+POST http://127.0.0.1:12307/v1/user/login/guest HTTP/1.1
+content-type: application/json
+
+{
+    "channelId": "konglai",
+    "appId": "konglai",
+    "imei": "c0a4ce912c48a3d0b17b59e6b97f1dca"
+}

@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"go-mahjong-server/db"
+	"go-mahjong-server/internal/web/api"
 	"go-mahjong-server/pkg/algoutil"
 	"go-mahjong-server/pkg/whitelist"
 	"go-mahjong-server/protocol"
@@ -18,7 +19,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Closer func()
+// type Closer func()
 
 var logger = log.WithField("component", "http")
 
@@ -68,6 +69,7 @@ func startupService() http.Handler {
 	)
 
 	nex.Before(logRequest)
+	mux.Handle("/v1/user/", api.MakeLoginService())
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(webDir))))
 	mux.Handle("/ping", nex.Handler(pongHandler))
 

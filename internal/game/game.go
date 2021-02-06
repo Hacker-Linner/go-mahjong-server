@@ -66,6 +66,8 @@ func Startup() {
 	// register game handler
 	comps := &component.Components{}
 	comps.Register(defaultManager)
+	comps.Register(defaultDeskManager)
+	comps.Register(new(ClubManager))
 
 	// 加密管道
 	c := newCrypto()
@@ -80,5 +82,6 @@ func Startup() {
 		nano.WithLogger(log.WithField("component", "nano")),
 		nano.WithSerializer(json.NewSerializer()),
 		nano.WithComponents(comps),
+		nano.WithDebugMode(),
 	)
 }

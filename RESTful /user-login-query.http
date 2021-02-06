@@ -1,0 +1,10 @@
+
+
+### 查询是否启用游客登陆
+POST http://127.0.0.1:12307/v1/user/login/query HTTP/1.1
+content-type: application/json
+
+{
+    "channelId": "konglai",
+    "appId": "konglai"
+}
