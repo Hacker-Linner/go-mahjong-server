@@ -33,3 +33,14 @@ docker volume ls
 
 docker volume rm go-mahjong-server_db_data
 ```
+
+### expres-mongo
+
+```sh
+docker ps
+docker-compose -f docker-compose.express.mongo.yml down
+
+docker-compose -f docker-compose.express.mongo.yml up -d
+
+docker volume ls
+```

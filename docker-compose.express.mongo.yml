@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:4.0.6
+    restart: always
+    networks:
+      - expres-mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: example
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    networks:
+      - expres-mongo
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: example
+      ME_CONFIG_BASICAUTH_PASSWORD: example
+      ME_CONFIG_MONGODB_ADMINUSERNAME: example
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  expres-mongo:
+    driver: "bridge"
