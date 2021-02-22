@@ -44,3 +44,7 @@ docker-compose -f docker-compose.express.mongo.yml up -d
 
 docker volume ls
 ```
+
+### Game Manager Component
+
+![](./Manager-component.png)
