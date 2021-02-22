@@ -16,10 +16,11 @@ cert = "configs/****.crt"       #证书路径
 key = "configs/****.key"        #Key路径
 
 [game-server]
-host = "192.168.31.125"
+# host = "192.168.31.125"
 # host = "10.10.19.204"
 # host = "10.254.229.9"
 # host = "192.168.43.187"
+host = "192.168.3.141"
 port = 33251
 
 # Redis server config
